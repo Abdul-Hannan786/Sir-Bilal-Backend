@@ -4,6 +4,7 @@ import "dotenv/config";
 import mongoose from "mongoose";
 import taskRoutes from "./routes/tasks.js";
 import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/user.js";
 
 const app = express();
 const PORT = 3000;
@@ -13,11 +14,12 @@ app.use(express.json());
 
 // {Params}
 app.get("/", (req, res) => {
-  res.status(200).send(tasks);
+  res.status(200).send("Hello World");
 });
 
 app.use("/task", taskRoutes)
 app.use("/auth", authRoutes)
+app.use("/user", userRoutes)
 
 mongoose
   .connect(process.env.MONGODBURI)
